@@ -52,3 +52,5 @@ export const ProductForm = ({ onSubmit }: Props) => {
     </form>
   )
 }
+
+export default ProductForm;

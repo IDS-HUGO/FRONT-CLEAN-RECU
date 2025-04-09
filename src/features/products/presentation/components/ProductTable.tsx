@@ -32,3 +32,6 @@ export const ProductTable = ({ products, onDelete }: Props) => (
     </tbody>
   </table>
 )
+
+
+export default ProductTable;

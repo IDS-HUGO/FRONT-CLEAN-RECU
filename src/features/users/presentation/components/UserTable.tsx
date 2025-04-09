@@ -42,3 +42,5 @@ export const UserTable = ({ users, onEdit, onDelete }: Props) => (
     </tbody>
   </table>
 );
+
+export default UserTable;

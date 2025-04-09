@@ -88,3 +88,6 @@ export const UserForm = ({ onSubmit, initialData }: Props) => {
     </form>
   );
 };
+
+
+export default UserForm;

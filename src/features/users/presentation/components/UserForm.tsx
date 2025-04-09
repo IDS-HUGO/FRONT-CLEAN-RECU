@@ -16,21 +16,22 @@ const emptyForm: UserEntity = {
 };
 
 export const UserForm = ({ onSubmit, initialData }: Props) => {
-  const [user, setUser] = useState(emptyForm);
+  const [user, setUser] = useState<UserEntity>(emptyForm);
 
   useEffect(() => {
     if (initialData) setUser(initialData);
+    else setUser(emptyForm);
   }, [initialData]);
 
-  const handleChange = (e: { target: { name: string; value: string } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(user);
-    setUser(emptyForm);
+    if (!initialData) setUser(emptyForm);
   };
 
   return (

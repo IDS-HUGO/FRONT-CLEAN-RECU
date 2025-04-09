@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { HomePage } from "../../pages/HomePage.tsx";  // Add .tsx extension
+import { HomePage } from "../../pages/HomePage"; // Use named import
 
 export const AppRouter = () => {
   return (

@@ -2,8 +2,18 @@ import { useEffect, useState } from 'react'
 import { ProductEntity } from '../../domain/entities/product.entity'
 import { ProductRepositoryImpl } from '../../data/repository/product.repository.impl'
 import { ProductDataSource } from '../../data/datasource/product.datasource'
+import { GetAllProductsUseCase } from '../../domain/usecases/get-all-products.usecase'
+import { CreateProductUseCase } from '../../domain/usecases/create-product.usecase'
+import { UpdateProductUseCase } from '../../domain/usecases/update-product.usecase'
+import { DeleteProductUseCase } from '../../domain/usecases/delete-product.usecase'
 
-const repo = new ProductRepositoryImpl(new ProductDataSource())
+// Creamos las instancias de los casos de uso
+const dataSource = new ProductDataSource()
+const repository = new ProductRepositoryImpl(dataSource)
+const getAllProductsUseCase = new GetAllProductsUseCase(repository)
+const createProductUseCase = new CreateProductUseCase(repository)
+const updateProductUseCase = new UpdateProductUseCase(repository)
+const deleteProductUseCase = new DeleteProductUseCase(repository)
 
 export const useProductViewModel = () => {
   const [products, setProducts] = useState<ProductEntity[]>([])
@@ -11,25 +21,41 @@ export const useProductViewModel = () => {
 
   const loadProducts = async () => {
     setLoading(true)
-    const data = await repo.getAll()
-    setProducts(data)
-    setLoading(false)
+    try {
+      const data = await getAllProductsUseCase.execute()
+      setProducts(data)
+    } catch (error) {
+      console.error('Error loading products:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
-
   const addProduct = async (product: Omit<ProductEntity, 'id'>) => {
-    await repo.create(product)
-    loadProducts()
+    try {
+      await createProductUseCase.execute(product)
+      await loadProducts()
+    } catch (error) {
+      console.error('Error adding product:', error)
+    }
   }
 
   const updateProduct = async (product: ProductEntity) => {
-    await repo.update(product)
-    loadProducts()
+    try {
+      await updateProductUseCase.execute(product)
+      await loadProducts()
+    } catch (error) {
+      console.error('Error updating product:', error)
+    }
   }
 
   const deleteProduct = async (id: number) => {
-    await repo.delete(id)
-    loadProducts()
+    try {
+      await deleteProductUseCase.execute(id)
+      await loadProducts()
+    } catch (error) {
+      console.error('Error deleting product:', error)
+    }
   }
 
   useEffect(() => {

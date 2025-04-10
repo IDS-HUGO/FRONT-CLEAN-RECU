@@ -1,8 +1,8 @@
 import React from 'react';
-import { useUserViewModel } from "../viewModels/useUserViewModel";
-import { UserForm } from "../components/UserForm";
-import { UserTable } from "../components/UserTable";
-import { UserEntity } from "../../domain/entities/user.entity";
+import { useUserViewModel } from "../viewModels/useUserViewModel.ts";
+import { UserForm } from "../components/UserForm.tsx";
+import { UserTable } from "../components/UserTable.tsx";
+import { UserEntity } from "../../domain/entities/user.entity.ts";
 
 export const UserPage = () => {
   const { users, add, update, remove, selected, setSelected } = useUserViewModel();

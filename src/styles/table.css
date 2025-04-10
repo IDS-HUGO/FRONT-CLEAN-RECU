@@ -1,0 +1,33 @@
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: var(--secondary-50);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--secondary-600);
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--secondary-100);
+}
+
+.table tr:hover {
+  background-color: var(--secondary-50);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}

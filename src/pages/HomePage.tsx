@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserPage } from "../features/users/presentation/pages/UserPage";
-import { ProductPage } from "../features/products/presentation/pages/ProductPage";
+import { UserPage } from "../features/users/presentation/pages/UserPage.tsx";
+import { ProductPage } from "../features/products/presentation/pages/ProductPage.tsx";
 
 export const HomePage = () => {
   return (

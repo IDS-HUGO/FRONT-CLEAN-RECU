@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { ProductEntity } from '../../domain/entities/product.entity'
-import { ProductRepositoryImpl } from '../../data/repository/product.repository.impl'
-import { ProductDataSource } from '../../data/datasource/product.datasource'
-import { GetAllProductsUseCase } from '../../domain/usecases/get-all-products.usecase'
-import { CreateProductUseCase } from '../../domain/usecases/create-product.usecase'
-import { UpdateProductUseCase } from '../../domain/usecases/update-product.usecase'
-import { DeleteProductUseCase } from '../../domain/usecases/delete-product.usecase'
+import { ProductEntity } from '../../domain/entities/product.entity.ts'
+import { ProductRepositoryImpl } from '../../data/repository/product.repository.impl.ts'
+import { ProductDataSource } from '../../data/datasource/product.datasource.ts'
+import { GetAllProductsUseCase } from '../../domain/usecases/get-all-products.usecase.ts'
+import { CreateProductUseCase } from '../../domain/usecases/create-product.usecase.ts'
+import { UpdateProductUseCase } from '../../domain/usecases/update-product.usecase.ts'
+import { DeleteProductUseCase } from '../../domain/usecases/delete-product.usecase.ts'
 
-// Creamos las instancias de los casos de uso
+
 const dataSource = new ProductDataSource()
 const repository = new ProductRepositoryImpl(dataSource)
 const getAllProductsUseCase = new GetAllProductsUseCase(repository)

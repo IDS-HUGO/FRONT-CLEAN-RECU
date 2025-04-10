@@ -1,6 +1,6 @@
 import { ProductModel } from '../models/product.model'
 
-const API_URL = 'http://localhost:8080/products' 
+const API_URL = 'http://localhost:8080/api/products' 
 
 export class ProductDataSource {
   async getAll(): Promise<ProductModel[]> {
@@ -14,8 +14,13 @@ export class ProductDataSource {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)
     })
+    if (!res.ok) {
+      const errorData = await res.text()
+      console.error('Error creating product:', errorData)
+      throw new Error(`Failed to create product: ${errorData}`)
+    }
     return res.json()
-  }
+}
 
   async update(product: ProductModel): Promise<ProductModel> {
     const res = await fetch(`${API_URL}/${product.id}`, {

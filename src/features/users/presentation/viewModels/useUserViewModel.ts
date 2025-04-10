@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { UserEntity } from "../../domain/entities/user.entity";
-import { createUser } from "../../domain/usecases/create-user.usecase";
-import { deleteUser } from "../../domain/usecases/delete-user.usecase";
-import { getAllUsers } from "../../domain/usecases/get-all-users.usecase";
-import { updateUser } from "../../domain/usecases/update-user.usecase";
-import { userRepositoryImpl } from "../../data/repository/user.repository.impl";
+import { UserEntity } from "../../domain/entities/user.entity.ts";
+import { createUser } from "../../domain/usecases/create-user.usecase.ts";
+import { deleteUser } from "../../domain/usecases/delete-user.usecase.ts";
+import { getAllUsers } from "../../domain/usecases/get-all-users.usecase.ts";
+import { updateUser } from "../../domain/usecases/update-user.usecase.ts";
+import { userRepositoryImpl } from "../../data/repository/user.repository.impl.ts";
 
 export const useUserViewModel = () => {
   const [users, setUsers] = useState<UserEntity[]>([]);
@@ -22,7 +22,6 @@ export const useUserViewModel = () => {
 
   const add = async (user: UserEntity) => {
     try {
-      // Generar ID si no existe
       const newUser = { ...user, id: user.id || uuidv4() };
       await createUser(userRepositoryImpl)(newUser);
       await load();
@@ -63,3 +62,5 @@ export const useUserViewModel = () => {
     remove
   };
 };
+
+export default useUserViewModel;

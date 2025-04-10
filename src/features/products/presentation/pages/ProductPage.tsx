@@ -1,7 +1,8 @@
 import React from 'react'
-import { useProductViewModel } from '../viewModels/useProductViewModel'
-import { ProductForm } from '../components/ProductForm'
-import { ProductTable } from '../components/ProductTable'
+import { useProductViewModel } from '../viewModels/useProductViewModel.ts'
+import { ProductForm } from '../components/ProductForm.tsx'
+import { ProductTable } from '../components/ProductTable.tsx'
+
 
 export const ProductPage = () => {
   const { products, addProduct, deleteProduct, loading } = useProductViewModel()

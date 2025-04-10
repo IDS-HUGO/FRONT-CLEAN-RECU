@@ -1,0 +1,28 @@
+.app-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 2rem 0;
+  }
+  
+  .navbar {
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 1rem 0;
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }

@@ -6,3 +6,4 @@ export interface UserEntity {
     role: string;
   }
   
+export default UserEntity;
